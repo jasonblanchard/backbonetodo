@@ -10,7 +10,6 @@ window.Backbonetodo = {
     this.todosView = new Backbonetodo.Views.TodosIndex({collection: this.todosList});
     this.todosView.render();
     $('#app').append(this.todosView.el);
-    console.log(this.todosView.render());
   }
 };
 

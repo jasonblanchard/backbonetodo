@@ -1,6 +1,11 @@
 Backbonetodo.Views.TodosIndex = Backbone.View.extend({
   tagName: 'ul',
-  template: JST['todos/index'],
+  //template: JST['todos/index'],
+  initialize: function() {
+    this.collection.on('add', this.addOne, this);
+    this.collection.on('reset', this.addAll, this);
+  },
+
   render: function() {
     this.addAll();
     return this;
