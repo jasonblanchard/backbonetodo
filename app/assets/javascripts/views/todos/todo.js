@@ -1,7 +1,6 @@
 Backbonetodo.Views.Todo = Backbone.View.extend({
-  tagName: 'li',
   className: 'todo',
-  template: _.template('<%= title %>'),
+  template: _.template('<span class="<%= complete == true ? "complete" : "" %>"><%= title %></span>'),
   
   initialize: function() {
     this.model.on('hide', this.remove, this);
