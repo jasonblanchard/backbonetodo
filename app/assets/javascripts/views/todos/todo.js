@@ -4,6 +4,7 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
   
   initialize: function() {
     this.model.on('hide', this.remove, this);
+    this.model.on('change', this.render, this);
   },
 
   render: function() {
