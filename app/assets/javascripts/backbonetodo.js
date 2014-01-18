@@ -9,7 +9,8 @@ window.Backbonetodo = {
     this.todosList.fetch();
     this.todosView = new Backbonetodo.Views.TodosIndex({collection: this.todosList});
     this.todosView.render();
-    $('#app').prepend(new Backbonetodo.Views.TodoForm({model: new Backbonetodo.Models.Todo()}).render().el);
+    this.todosForm = new Backbonetodo.Views.TodoForm({model: new Backbonetodo.Models.Todo(), collection: this.todosList});
+    $('#app').prepend(this.todosForm.render().el);
     $('#app').append(this.todosView.el);
   }
 };

@@ -3,7 +3,8 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
   template: _.template('<button type="button" class="btn btn-default btn-xs">' + 
     '<span class="glyphicon glyphicon-ok"></span>' +
     '</button>' +
-    '<span class="<%= complete == true ? "complete" : "" %>"><%= title %></span>'),
+    '<span class="<%= complete == true ? "complete" : "" %>"><%= title %></span>' +
+    '<a href="#" class="remove-todo"><span class="glyphicon glyphicon-remove"</span></a>'),
   
   initialize: function() {
     this.model.on('hide', this.remove, this);
@@ -11,7 +12,8 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
   },
   
   events: {
-    'click button': 'toggleStatus'
+    'click button': 'toggleStatus',
+    'click a': 'deleteTodo'
   },
 
   render: function() {
@@ -22,5 +24,10 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
 
   toggleStatus: function() {
     this.model.toggleStatus();
-   }
+   },
+
+  deleteTodo: function(e) {
+    e.preventDefault();
+    this.model.destroy();
+  }
 });
