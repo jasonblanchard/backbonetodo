@@ -3,7 +3,7 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
   template: _.template('<button type="button" class="btn btn-default btn-xs">' + 
     '<span class="glyphicon glyphicon-ok"></span>' +
     '</button>' +
-    '<span class="<%= complete == true ? "complete" : "" %>"><%= title %></span>' +
+    '<span class="<%= model.get("complete") == true ? "complete" : "" %>"><%= model.escape("title") %></span>' +
     '<a href="#" class="remove-todo"><span class="glyphicon glyphicon-remove"</span></a>'),
   
   initialize: function() {
@@ -17,8 +17,7 @@ Backbonetodo.Views.Todo = Backbone.View.extend({
   },
 
   render: function() {
-    var attributes = this.model.toJSON();
-    this.$el.html(this.template(attributes));
+    this.$el.html(this.template({model: this.model}));
     return this;
   },
 
