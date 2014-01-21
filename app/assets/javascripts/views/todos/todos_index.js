@@ -4,6 +4,8 @@ Backbonetodo.Views.TodosIndex = Backbone.View.extend({
     this.collection.on('add', this.addOne, this);
     this.collection.on('reset', this.addAll, this);
   },
+  
+  className: 'todos',
 
   render: function() {
     this.addAll();
