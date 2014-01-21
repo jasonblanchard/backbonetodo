@@ -22,6 +22,7 @@ Backbonetodo.Views.TodoForm = Backbone.View.extend({
     newTodo.save();
     this.collection.add(newTodo);
     this.reset();
+    this.$el.find('input').focus();
   },
 
   reset: function() {
